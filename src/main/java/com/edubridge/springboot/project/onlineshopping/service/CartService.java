@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.edubridge.springboot.project.onlineshopping.entities.Cart;
 import com.edubridge.springboot.project.onlineshopping.entities.Products;
 import com.edubridge.springboot.project.onlineshopping.entities.ProductsFromView;
-import com.edubridge.springboot.project.onlineshopping.entities.UserOrder;
 
 @Service
 public interface CartService {

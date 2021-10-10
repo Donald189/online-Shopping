@@ -16,6 +16,7 @@ public class ProductsViewController {
 	@Autowired
 	ProductsService productsService;
 	
+	//to view products page in index page
 	@RequestMapping("/")
 	public String viewProducts(Model model) {
 		List<Products> productsList = productsService.getAllProducts();
@@ -23,10 +24,4 @@ public class ProductsViewController {
 		return "index";
 	}
 	
-	/*@RequestMapping("/products")
-	public String viewProductss(Model model) {
-		List<Products> productsList = productsService.getAllProducts();
-		model.addAttribute("productsList", productsList);
-		return productsList;
-*/
 }

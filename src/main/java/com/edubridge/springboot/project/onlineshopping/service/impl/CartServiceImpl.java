@@ -9,17 +9,12 @@ import org.springframework.stereotype.Service;
 import com.edubridge.springboot.project.onlineshopping.entities.Cart;
 import com.edubridge.springboot.project.onlineshopping.entities.Products;
 import com.edubridge.springboot.project.onlineshopping.entities.ProductsFromView;
-import com.edubridge.springboot.project.onlineshopping.entities.UserOrder;
 import com.edubridge.springboot.project.onlineshopping.repository.CartRepository;
 import com.edubridge.springboot.project.onlineshopping.repository.ProductsRepository;
-import com.edubridge.springboot.project.onlineshopping.repository.UserOrderRepository;
 import com.edubridge.springboot.project.onlineshopping.service.CartService;
 
 @Service
 public class CartServiceImpl implements CartService {
-
-	@Autowired
-	UserOrderRepository userOrderRepo;
 	
 	@Autowired
 	CartRepository cartRepo;
@@ -37,16 +32,6 @@ public class CartServiceImpl implements CartService {
 		cart.setProducts(productsList);
 		return cartRepo.save(cart);
 	}
-	/*@Override
-	public Cart addProduct(String productNameStr) {
-		Cart cart = new Cart();
-		int productName = Integer.parseInt(productNameStr);
-		Products products = productsRepo.findByName(productName).get();
-		List<Products> productsList = new ArrayList<>();
-		productsList.add(products);
-		cart.setProducts(productsList);
-		return cartRepo.save(cart);
-	}*/
 
 	@Override
 	public List<Cart> getAllUserOrders() {

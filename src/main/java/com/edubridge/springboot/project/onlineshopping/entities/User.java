@@ -21,32 +21,19 @@ import javax.persistence.Table;
 public class User {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String userId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer userId;
 	private String firstName;
 	private String lastName;
 	private String userPhone;
 	
-	/*@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userName")
-	private Login login;
-	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "user_cart", joinColumns = @JoinColumn(name = "cartId"),
-    inverseJoinColumns = @JoinColumn(name = "userId"))
-	private Cart cart;
-	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "productName")
-	private Set<Products> products;
-	*/
 	public User() {}
 
-	public String getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 
@@ -98,7 +85,6 @@ public class User {
 				+ userPhone + "]";
 	}
 
-		
-	
+			
 }
 

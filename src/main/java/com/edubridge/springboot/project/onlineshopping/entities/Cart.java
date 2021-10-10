@@ -30,10 +30,6 @@ public class Cart {
     inverseJoinColumns = @JoinColumn(name = "productId"))
 	private List<Products> products;
 	
-	/*@OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
-	@JoinColumn(nullable = false, name = "user_name")
-	private User user;*/
-	
 	public Cart() {}
 
 	public int getCartId() {

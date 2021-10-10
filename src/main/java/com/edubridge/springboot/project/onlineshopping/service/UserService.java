@@ -10,10 +10,20 @@ import com.edubridge.springboot.project.onlineshopping.entities.User;
 @Service
 public interface UserService {
 	
-	public void addUser(User user);
+	public User saveUser(User user);
+	
+	public List<User> getAllUser();
+	
+	public User getUserById(int userId);
+	
+	public User updateUser(int userId, User user);
+	
+	public void deleteUser(int userId);
 	
 	//public User getUserByemailId(String emailId);
 
-	public List<Products> getAllProducts();
+	//public List<Products> getAllProducts();
+
+	
 
 }

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.edubridge.springboot.project.onlineshopping.entities.Cart;
 import com.edubridge.springboot.project.onlineshopping.entities.Products;
 import com.edubridge.springboot.project.onlineshopping.entities.ProductsFromView;
-import com.edubridge.springboot.project.onlineshopping.entities.UserOrder;
 import com.edubridge.springboot.project.onlineshopping.service.CartService;
 
 @Controller
@@ -21,7 +20,8 @@ public class CartViewController {
 	
 	@Autowired
 	CartService cartService;
-
+    
+	//requesting to view cart page
 	@RequestMapping("/cart")
 	public String viewCartPage(Model model) {
 		List<Cart> cart = cartService.getAllUserOrders();
@@ -29,13 +29,7 @@ public class CartViewController {
 		return "cart_products";
 	}
 	
-	/*@RequestMapping("/cartorder")
-	public String viewCartOrder(Model model) {
-		List<Cart> cartOrder = cartService.getAllUserOrders();
-		model.addAttribute("cartList", cartOrder);
-		return "cart_products";
-	}*/
-	
+	//To add products in cart by clicking add to cart
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	//@PostMapping("/save")
 	public String saveProduct(@ModelAttribute("products") String productId ) {

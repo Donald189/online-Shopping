@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.edubridge.springboot.project.onlineshopping.entities.Products;
 import com.edubridge.springboot.project.onlineshopping.entities.User;
+import com.edubridge.springboot.project.onlineshopping.exception.RecordNotFoundException;
 import com.edubridge.springboot.project.onlineshopping.repository.ProductsRepository;
 import com.edubridge.springboot.project.onlineshopping.repository.UserRepository;
 import com.edubridge.springboot.project.onlineshopping.service.UserService;
@@ -15,25 +16,35 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	UserRepository userRepo;
-	
-	@Autowired
-	ProductsRepository productsRepo;
 
 	@Override
-	public void addUser(User user) {
-		userRepo.save(user);
+	public User saveUser(User user) {
+		return userRepo.save(user);
 	}
-
-	/*@Override
-	public User getUserByemailId(String emailId) {
-		return userRepo.getUserByemailId(emailId);
-	}*/
 
 	@Override
-	public List<Products> getAllProducts() {
-		return productsRepo.findAll();
+	public List<User> getAllUser() {
+		return userRepo.findAll();
 	}
 
-	
+	@Override
+	public User getUserById(int userId) {
+		return userRepo.findById(userId)
+				.orElseThrow(() -> new RecordNotFoundException("User with "+userId+"Not Found"));
+	}
+
+	@Override
+	public User updateUser(int userId, User user) {
+		User u1 = getUserById(userId);
+		u1.setUserPhone(user.getUserPhone());
+		return userRepo.save(u1);
+	}
+
+	@Override
+	public void deleteUser(int userId) {
+		User user = getUserById(userId);
+		userRepo.deleteById(userId);
+		
+	}
 
 }
